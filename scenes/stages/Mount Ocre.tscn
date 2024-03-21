@@ -1,0 +1,38 @@
+[gd_scene load_steps=4 format=3 uid="uid://dfby4sk02ugfs"]
+
+[ext_resource type="Texture2D" uid="uid://bbmdhrud7hqx3" path="res://ressources/textures/stages/MountOcreBCKG.png" id="1_c1h48"]
+[ext_resource type="Texture2D" uid="uid://m4yggddyk0xg" path="res://ressources/textures/stages/MountOcrePLat.png" id="2_d63dr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4l52x"]
+
+[node name="Mount Ocre stage" type="Node2D"]
+texture_filter = 1
+
+[node name="background" type="Sprite2D" parent="."]
+position = Vector2(0, -597)
+scale = Vector2(3.26, 3.26)
+texture = ExtResource("1_c1h48")
+
+[node name="stage" type="StaticBody2D" parent="."]
+position = Vector2(138.485, 40.615)
+scale = Vector2(1.44, 1.44)
+collision_layer = 6
+
+[node name="stage" type="Sprite2D" parent="stage"]
+texture = ExtResource("2_d63dr")
+
+[node name="platform" type="StaticBody2D" parent="stage"]
+position = Vector2(0, -550)
+collision_layer = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="stage/platform"]
+visible = false
+position = Vector2(-94.143, 34.546)
+scale = Vector2(17.725, 0.615)
+shape = SubResource("RectangleShape2D_4l52x")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="stage"]
+visible = false
+position = Vector2(7.145, 0)
+scale = Vector2(0.97, 1)
+polygon = PackedVector2Array(490, -195, 490, 210, 315, 400, 315, 2500, -535, 2500, -535, 400, -710, 209.295, -710, -195)

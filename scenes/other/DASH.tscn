@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://rdsr7t1kt57h"]
+
+[ext_resource type="Script" path="res://scripts/characters/DASH.gd" id="1_uh83n"]
+
+[node name="DASH" type="Node"]
+script = ExtResource("1_uh83n")
+
+[node name="dash Duration" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="dash Duration" to="." method="_on_dash_timer_timeout"]

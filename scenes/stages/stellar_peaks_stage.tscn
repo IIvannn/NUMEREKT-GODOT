@@ -1,0 +1,51 @@
+[gd_scene load_steps=6 format=3 uid="uid://7pwqw52pqor1"]
+
+[ext_resource type="Texture2D" uid="uid://doc3vwwph7b1l" path="res://ressources/textures/stages/STELLAR_PEAKS_BCKG.png" id="1_tddas"]
+[ext_resource type="Texture2D" uid="uid://c23wvmniu5ise" path="res://ressources/textures/stages/STELLAR_PEAKS_STAGE.png" id="2_88rtf"]
+[ext_resource type="Texture2D" uid="uid://d20ty4jjhk5cg" path="res://ressources/textures/stages/STELLAR_PEAKS_PLAT.png" id="3_1u5kp"]
+[ext_resource type="PackedScene" uid="uid://djrbqxkld4rbh" path="res://scenes/characters/Player.tscn" id="4_osnep"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4l52x"]
+
+[node name="Stellar Peaks stage" type="Node2D"]
+
+[node name="background" type="Sprite2D" parent="."]
+position = Vector2(0, -597)
+scale = Vector2(3.26, 3.26)
+texture = ExtResource("1_tddas")
+
+[node name="stage" type="StaticBody2D" parent="."]
+collision_layer = 6
+
+[node name="stage" type="Sprite2D" parent="stage"]
+texture = ExtResource("2_88rtf")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="stage"]
+visible = false
+polygon = PackedVector2Array(840, -245, 840, 69, 590, 400, 0, 560, -590, 400, -840, 69, -840, -245)
+
+[node name="platform" type="StaticBody2D" parent="stage"]
+position = Vector2(0, -550)
+collision_layer = 8
+
+[node name="StellarPeaksPlat" type="Sprite2D" parent="stage/platform"]
+texture = ExtResource("3_1u5kp")
+offset = Vector2(-48, -11)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="stage/platform"]
+visible = false
+position = Vector2(-2.52, 4.05)
+scale = Vector2(21.48, 1)
+shape = SubResource("RectangleShape2D_4l52x")
+one_way_collision = true
+
+[node name="Player" parent="." instance=ExtResource("4_osnep")]
+position = Vector2(-521, -419)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2(0, -117.38)
+
+[node name="Player2" parent="." instance=ExtResource("4_osnep")]
+position = Vector2(90, -368)
+SPEED = 0.0
+JUMP_VELOCITY = 0.0

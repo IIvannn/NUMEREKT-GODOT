@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://dpyjf46ivxtni"]
+
+[ext_resource type="Texture2D" uid="uid://dei2tyef3iwqh" path="res://ressources/textures/characters/Moai.png" id="1_6y5jn"]
+[ext_resource type="Script" path="res://scripts/characters/dummy.gd" id="1_kxf7g"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0iwos"]
+size = Vector2(64, 93)
+
+[node name="Dummy" type="CharacterBody2D"]
+collision_mask = 6
+script = ExtResource("1_kxf7g")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_6y5jn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_0iwos")
