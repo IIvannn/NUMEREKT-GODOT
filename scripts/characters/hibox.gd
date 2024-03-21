@@ -1,5 +1,6 @@
 extends Area2D
 @export var forceX = 2500
+@export var forceXREV = -2500
 @export var forceY = -250
 @export var dur = 0.5
 @onready var Player = $"../../.."
@@ -13,6 +14,9 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	
+	print (forceX*face_multiplyer)
+	
 	if body.scale.x == -1:
 		face_multiplyer = -1
 	else:
@@ -20,8 +24,7 @@ func _process(delta):
 
 
 func _on_body_entered(body):
+	
 	if body.has_method("knockback") and body.invincible == false:
 		body.is_hit = true
-		if body.is_hit:
-			body.hurt_Timer.start(dur)
 		body.knockback(forceX * face_multiplyer, forceY, 2, 0.1, 20)

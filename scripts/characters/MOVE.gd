@@ -5,7 +5,7 @@ func update(delta):
 	$"../../AnimationPlayer".play("walk")
 	player_movement()
 	Player.gravity(delta)
-	if Player.velocity.x == 0:
+	if Player.movement_input.x == 0 :
 		return STATES.IDLE
 	if Player.velocity.y > 0:
 		return STATES.FALL

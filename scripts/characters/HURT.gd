@@ -4,6 +4,7 @@ var attacking = false
 
 
 func update(delta):
+	Player.gravity(delta)
 	if Player.is_hit == false and Player.onGround:
 		return STATES.IDLE
 	elif Player.is_hit == false and Player.onGround == false:

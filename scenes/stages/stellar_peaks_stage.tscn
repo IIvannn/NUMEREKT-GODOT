@@ -8,6 +8,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4l52x"]
 
 [node name="Stellar Peaks stage" type="Node2D"]
+texture_filter = 1
 
 [node name="background" type="Sprite2D" parent="."]
 position = Vector2(0, -597)

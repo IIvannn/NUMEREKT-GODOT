@@ -42,9 +42,7 @@ var prev_state = null
 
 var invincible = false
 
-
-
-
+var face = null
 
 
 func _ready():
@@ -58,7 +56,7 @@ func _ready():
 
 func _physics_process(delta):
 	
-	$"damage Label".modulate = Color(1 - health/700 ,1 - health/200,1 - health/100)
+	$"damage Label".modulate = Color(1 - health/700 ,1 - health/300,1 - health/100)
 	
 	if facingLEFT:
 		$body.scale.x = -1
@@ -71,9 +69,11 @@ func _physics_process(delta):
 		modulate = Color.ALICE_BLUE
 	
 	if last_direction == Vector2.RIGHT:
+		face = 1
 		facingRIGHT = true
 		facingLEFT = false
 	else:
+		face = -1
 		facingRIGHT = false
 		facingLEFT = true
 	
@@ -192,14 +192,8 @@ func _on_accel_timer_timeout():
 
 func knockback(forceX : float, forceY : float, variable_force : float, duration : float, damage : float):
 	if is_hit:
-		var varforce
-		var dur
-		varforce = health * variable_force
-		dur  = duration * variable_force*2
-		health += damage
-		velocity = Vector2.ZERO
-		velocity = Vector2(forceX + varforce, forceY - varforce)
 		$"Timers/hurt Timer".start(duration)
+		velocity = Vector2(forceX, forceY)
 
 func _on_hurt_timer_timeout():
 	is_hit = false
@@ -207,7 +201,7 @@ func _on_hurt_timer_timeout():
 
 func _on_hurtbox_area_entered(area):
 	invincible = true
-	$Timers/invTimer.start(0.1)
+	$Timers/invTimer.start(0.3)
 
 func _on_inv_timer_timeout():
 	invincible = false
